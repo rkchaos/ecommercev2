@@ -1,0 +1,26 @@
+<%-include("./header")%>
+<%-include("./navbar")%>
+<div class="row ">
+    <% if(searchProduct!=''){ %>
+
+       <% searchProduct.forEach(item=>{%>
+
+
+        <div class="col-md-4" style="width: 300px; margin-top: 100px;">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="<%=item.img%>">
+              <div class="card-body">       
+                    <h5 class="card-title"> Rs: <%= item.price %> </h5>
+                    <h3 class="card-title"> <%= item.name %> </h3>
+                  <div class="btn-group">
+                    <a href="/products/<%=item._id%>" class="btn btnn btn-primary">View Product</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <%})%>
+        <% } else { %>
+            <h2>No results found.</h2>
+          <% } %>
+</div>
+

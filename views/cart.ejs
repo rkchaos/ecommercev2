@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" href="/css/quantity.css">
+<body>
+  <%-include("./header")%>
+<%-include('./navbar')%>
+<section class="container">
+    <h1 class="display-6 mt-5">MY CART</h1>
+  
+    <div class="row">
+      <div class="col-lg-8">
+        <% for(let item of user.cart){ %>
+        <div class="card mx-auto m-3 border" style="max-width: 500px">
+          <div class="row g-0">
+            <div class="col-4">
+              <img class="img-fluid rounded-start" src="<%=item.img%>" alt="" />
+            </div>
+            <div class="col-8">
+              <div class="card-body">
+                <h5 class="card-title"><%=item.name%></h5>  
+                <p class="card-text"><%=item.desc%></p>
+                <p class="card-text"><%=item.length%></p>
+                <div class="container">
+                  <div class="quantity-control" >
+                    
+                  <form action="/user/<%=item._id%>/cart" method="post">
+                  <label for="quan">Quantity</label>
+                   <input type="number" name="quantity" id="quan">
+                  </form>
+                  </div>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mx-auto m-3 border" style="max-width: 500px">
+          <div class="card-body">
+            <form class="d-inline-block" action="/user/cart/<%=item._id%>?_method=DELETE" method="POST">
+                 
+              <button class="btn btn-danger" style="margin-left: 350px;">Remove</button>.
+           
+      </form>
+          </div>
+        </div>
+       
+ 
+        <% } %>
+      </div>
+      <div class="col-lg-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Product name</th>
+              <th scope="col">Amount</th>
+           
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% user.cart.forEach((item, index) => { %>
+              <th scope="row"><%=index+1%></th>
+              <td> <%=item.name%></td>
+              <td><p class="price"><%=item.price%> </p></td>
+              
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+<h3>Total Amount(&#8377)</h3>
+       <strong><span class="total"><%=totalAmount%></span></strong>
+      </div>
+    </div>
+   <a href="/checkout/<%=user._id%>"> <button type="button" class="btn btn-primary">Checkout</button></a>
+  </section>
+  <script src="/js/quantity.js"></script>
+</body>
+</html>

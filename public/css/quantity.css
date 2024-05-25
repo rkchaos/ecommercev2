@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-controls button {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+}
+
+#quantity {
+    margin: 0 20px;
+    font-size: 2rem;
+}

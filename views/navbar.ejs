@@ -1,0 +1,40 @@
+<nav class="navbar fixed-top navbar-expand-lg bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/products" style="color: white;"> Shopping App</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation" style="background-color: white;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/" style="color: white;">Home</a>
+        </li>
+        <% if(currentUser && currentUser.role === "seller"){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/products/new"  style="color: white;"  >New</a>
+          </li>
+        <% } %>
+        <li class="nav-item">
+          <a class="nav-link" href="/products"  style="color: white;"  >Products</a>
+        </li>
+        <form class="d-flex" action="/search" method="post">
+          <label for="search"></label>
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchTerm" id="search" required>
+          <button class="btn btn-success" type="submit">Search</button>
+        </form>
+      </ul>
+      
+      <div class="d-flex" role="search">
+       
+        <% if(!currentUser){ %>
+          <a class="mx-2" href="/login"><button class="btn btn-outline-info" type="submit">Login</button></a>
+        <% }else{ %>
+           <a href="#" class="nav-link text-capitalize">Hello <%=currentUser.username%></i> 
+            <a href="/user/cart" class="nav-link" style="color: white;" ><i class="fa-solid fa-cart-plus"></i></i> 
+            <sup><span class="badge bg-danger" style="color: white;"><%=currentUser.cart.length%></span></sup> 
+          <a class="mx-2" href="/logout"><button class="btn btn-outline-info" type="submit">Logout</button></a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>

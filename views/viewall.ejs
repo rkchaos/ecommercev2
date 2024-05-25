@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <% for(let item of product){ %>
+
+        <div class="col-md-4" style="width: 450px;">
+            <div class="card mb-4 box-shadow">
+              <img class="card-img-top" src="<%=item.img%>">
+              <div class="card-body">       
+                    <h5 class="card-title"> Rs: <%= item.price %> </h5>
+                    <h3 class="card-title"> <%= item.name %> </h3>
+                    <h3 class="card-title"> <%= item.desc> </h3>
+                  <div class="btn-group">
+                    <a href="/products/<%=item._id%>" class="btn btnn btn-primary">View Product</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+        
+          
+        
+    <% } %>
+</body>
+</html>
